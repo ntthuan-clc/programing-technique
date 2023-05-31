@@ -1,0 +1,70 @@
+//ex1: 
+int count(List ls)
+{
+    int res = 0;
+    Node *pPrev = ls.head;
+    Node *pCurr = ls.head->next;
+    Node *pNext = curr->next;
+
+    while (pNext != NULL)
+    {
+        if (abs(pNext->data - pPrev->data) == pCurr->data)
+        {
+            res++;
+        }
+        pPrev = pCurr;
+        curr = pNext;
+        pNext = pNext->next;
+    }
+
+    return res;
+}
+
+//ex2:
+bool isSteadilyIncrease(Node* head, int _diff) {
+	if (head == nullptr || head->next == nullptr) {
+    	return true;
+    }
+    
+    int diff = head->next->data - head->data;
+    if (diff != _diff) {
+    	return false;
+    }
+    
+    return isSteadilyIncrease(head->next, _diff);
+}
+
+bool checkIncrease(Node* head) {
+	if (head == nullptr || head->next == nullptr) {
+    	return true;
+    }
+    
+	int _diff = head->next->data - head->data;
+    
+    return isSteadilyIncrease(head, _diff);
+}
+
+//ex3: 
+
+
+//ex4: 
+void extractFactors(unsigned int A[], unsigned int N,
+unsigned int X, unsigned int*& B, unsigned int& M) {
+  M = 0;
+  
+  for(int i = 0; i < N; ++i) {
+    if (X % A[i] == 0) {
+      M++;
+    }
+  }
+  
+  B = new unsigned int[M];
+  int index = 0;
+  
+  for(int i = 0; i < N; ++i) {
+    if (X % A[i] == 0) {
+      B[index] = A[i];
+      index++;
+    }
+  }  
+}
